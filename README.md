@@ -1,6 +1,6 @@
 # asr-whisper-server
-This is a simple Flask application for the deployment of Speech to Text transcription with whisper. 
-## Quick setup and run
+This is a simple Flask application for the deployment of Speech to Text transcription with [whisper](https://github.com/openai/whisper). 
+## Option 1: quick setup and run
 Install requirements with:
 ```pip install -r requirements.txt```
 
@@ -18,4 +18,9 @@ available options are:
 - ```--whisper_version```: which Whisper version to use (options are: ```['tiny', 'base', 'small', 'medium', 'large']```)
 - ```--ssl_context```: use this if you want to also access the service via GUI. (When accessing the service you'll have to trust it anyway). Simplest option to enable https GUI access is using ```--ssl_context=adhoc```. See here for enabling https [flak over https](https://werkzeug.palletsprojects.com/en/2.2.x/serving/#werkzeug.serving.run_simple)
 
-## Run in Docker container
+## Option 2: run in Docker container
+First build the docker container with:
+
+Run the container together with a shell inside the container itself.
+
+Follow steps in option 1 to run the app, skipping the installation of requirements.
