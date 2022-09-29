@@ -1,0 +1,204 @@
+a {
+  color: #337ab7;
+}
+p {
+  margin-top: 1rem;
+}
+a:hover {
+  color:#23527c;
+}
+a:visited {
+  color: #8d75a3;
+}
+
+body {
+  line-height: 1.5;
+  font-family: sans-serif;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  color:black;
+  margin:2em;
+}
+
+h1 {
+  text-decoration: underline red;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 6px;
+  font-size: 220%;
+  font-weight: bold;
+}
+
+h2 {
+  font-weight: bold;
+  color: #005A9C;
+  font-size: 140%;
+  text-transform: uppercase;
+}
+
+red {
+  color: red;
+}
+
+#controls {
+  display: flex;
+  /*margin-top: 2rem;*/
+  max-width: 28em;
+} 
+
+.controlButtons {
+  flex-grow: 1;
+  height: 2rem;
+  min-width: 7rem;
+  border: none;
+  border-radius: 0.15rem;
+  background: #ed341d;
+  margin-left: 2px;
+  box-shadow: inset 0 -0.15rem 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:#ffffff;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+
+.controlButtons:hover, .controlButtons:focus {
+  outline: none;
+  background: #c72d1c;
+}
+
+.controlButtons::-moz-focus-inner {
+  border: 0;
+}
+
+.controlButtons:active, .controlButtons:active {
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.2);
+  line-height: 3rem;
+}
+
+.controlButtons:disabled, .controlButtons:disabled {
+  pointer-events: none;
+  background: lightgray;
+}
+.controlButtons:first-child {
+  margin-left: 0;
+}
+
+.error_message{
+  margin-top: 3rem;
+  color: red;
+}
+
+audio {
+  display: block;
+  width: 100%;
+  margin-top: 0.2rem;
+}
+
+li {
+  /*list-style: none;*/
+  margin-bottom: 1rem;
+}
+
+#formats {
+  margin-top: 0.5rem;
+  font-size: 80%;
+}
+
+#recordingsList{
+  max-width: 28em;
+}
+
+
+/* Style the sidenav links and the dropdown button */
+
+.dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 15px;
+  color: #5599dd;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.dropdown-btn:hover {
+  color: #0d2bdb;
+}
+
+/* Main content */
+
+/* Add an active class to the active dropdown button */
+.active {
+  color: #0036d8;
+}
+
+.upload {
+  float : right;
+  width : 5.5rem;
+  height: 3rem;
+  /*transform : translateY(50%);*/
+  flex-grow: 1;
+  border: none;
+  border-radius: 0.15rem;
+  background: #078a07;
+  margin-left: 2px;
+  box-shadow: inset 0 -0.15rem 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e0d6d6;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.upload:hover{
+  background: #056905;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  /* background-color: #acbcbc;*/
+  font-size: 15px;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+.results{
+  border-bottom: double;
+}
+
+/* loading icon */
+.loader {
+  /* Light grey */
+  /* Blue */
+  margin-top: 4rem;
+  border: 0.5rem solid #3498db;
+  border-right-color: green;
+  border-bottom-color: red;
+  border-left-color: #eecf34;
+  border-radius: 50%;
+  width: 3rem;
+  height: 3rem;
+  margin-left: 35%;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

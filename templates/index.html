@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/style.css">
+</head>
+
+
+<body>
+<h1 align="center">ASR-IT</h1>
+
+<div align="center" style="margin-bottom: 2rem; margin-top: 2rem; border-bottom: double">
+    Speech to text service: see <a href="https://10.26.34.10:4002/user_manual"> manual </a> to post a request to this server via this page or via Postman. <br>
+    You can either record from microphone or upload a file, yet the quality of the microphone can negatively impact transcription accuracy. <br><br>
+</div>
+
+<div style="width: 100%; overflow: hidden;">
+
+    <div style="float: left; margin-left: 5%; width: 45%;">
+
+        <div id="controls" >
+
+            <input type="file" accept="audio/*" id="uploadFileButton" hidden>
+            <label for="uploadFileButton" class="controlButtons">Choose File</label>
+
+            <strong style='margin-right: 1rem; margin-left: 1rem;'> or </strong>
+
+            <button id="recordButton" class="controlButtons">Record</button>
+            <button id="pauseButton" class="controlButtons" disabled>Pause</button>
+            <button id="stopButton" class="controlButtons" disabled>Stop</button>
+
+        </div>
+
+        <div id="formats">Format: start recording to see sample rate</div>
+
+        <div style="width: 100%">
+            <ul id="recordingsList"></ul>
+        </div>
+    </div>
+
+    <div id="inference_options" style="margin-left: 55%;">
+
+        <input type="checkbox" id="use_gpu_btn" name="use_gpu_btn"> Use GPU (not implemented)
+        <br><br>
+
+        <select id="language_options">
+            <option value="it" selected="selected"> it </option>
+            <option value="DETECT"> DETECT LANGUAGE </option>
+            <option value="es">spanish</option>
+            <option value="fr">french</option>
+            <option value="en">english</option>
+            <option value="zh">chinese</option>
+            <option value="de">german</option>
+            <option value="ru">russian</option>
+            <option value="ko">korean</option>
+            <option value="ja">japanese</option>
+            <option value="pt">portuguese</option>
+            <option value="tr">turkish</option>
+            <option value="pl">polish</option>
+            <option value="ca">catalan</option>
+            <option value="nl">dutch</option>
+            <option value="ar">arabic</option>
+            <option value="sv">swedish</option>
+            <option value="it">italian</option>
+            <option value="id">indonesian</option>
+            <option value="hi">hindi</option>
+            <option value="fi">finnish</option>
+            <option value="vi">vietnamese</option>
+            <option value="iw">hebrew</option>
+            <option value="uk">ukrainian</option>
+            <option value="el">greek</option>
+            <option value="ms">malay</option>
+            <option value="cs">czech</option>
+            <option value="ro">romanian</option>
+            <option value="da">danish</option>
+            <option value="hu">hungarian</option>
+            <option value="ta">tamil</option>
+            <option value="no">norwegian</option>
+            <option value="th">thai</option>
+            <option value="ur">urdu</option>
+            <option value="hr">croatian</option>
+            <option value="bg">bulgarian</option>
+            <option value="lt">lithuanian</option>
+            <option value="la">latin</option>
+            <option value="mi">maori</option>
+            <option value="ml">malayalam</option>
+            <option value="cy">welsh</option>
+            <option value="sk">slovak</option>
+            <option value="te">telugu</option>
+            <option value="fa">persian</option>
+            <option value="lv">latvian</option>
+            <option value="bn">bengali</option>
+            <option value="sr">serbian</option>
+            <option value="az">azerbaijani</option>
+            <option value="sl">slovenian</option>
+            <option value="kn">kannada</option>
+            <option value="et">estonian</option>
+            <option value="mk">macedonian</option>
+            <option value="br">breton</option>
+            <option value="eu">basque</option>
+            <option value="is">icelandic</option>
+            <option value="hy">armenian</option>
+            <option value="ne">nepali</option>
+            <option value="mn">mongolian</option>
+            <option value="bs">bosnian</option>
+            <option value="kk">kazakh</option>
+            <option value="sq">albanian</option>
+            <option value="sw">swahili</option>
+            <option value="gl">galician</option>
+            <option value="mr">marathi</option>
+            <option value="pa">punjabi</option>
+            <option value="si">sinhala</option>
+            <option value="km">khmer</option>
+            <option value="sn">shona</option>
+            <option value="yo">yoruba</option>
+            <option value="so">somali</option>
+            <option value="af">afrikaans</option>
+            <option value="oc">occitan</option>
+            <option value="ka">georgian</option>
+            <option value="be">belarusian</option>
+            <option value="tg">tajik</option>
+            <option value="sd">sindhi</option>
+            <option value="gu">gujarati</option>
+            <option value="am">amharic</option>
+            <option value="yi">yiddish</option>
+            <option value="lo">lao</option>
+            <option value="uz">uzbek</option>
+            <option value="fo">faroese</option>
+            <option value="ht">haitian creole</option>
+            <option value="ps">pashto</option>
+            <option value="tk">turkmen</option>
+            <option value="nn">nynorsk</option>
+            <option value="mt">maltese</option>
+            <option value="sa">sanskrit</option>
+            <option value="lb">luxembourgish</option>
+            <option value="my">myanmar</option>
+            <option value="bo">tibetan</option>
+            <option value="tl">tagalog</option>
+            <option value="mg">malagasy</option>
+            <option value="as">assamese</option>
+            <option value="tt">tatar</option>
+            <option value="haw">hawaiian</option>
+            <option value="ln">lingala</option>
+            <option value="ha">hausa</option>
+            <option value="ba">bashkir</option>
+            <option value="jw">javanese</option>
+            <option value="su">sundanese</option>
+        </select>
+        <br><br>
+        
+        Decode method:
+        <select id="decode_method_options">
+            <option value="greedy" selected="selected"> greedy </option>
+            <option value="beam search" > beam search </option>
+        </select>
+
+        <br><br>
+    
+        <div id="inference_options_beam"  style = "display:none">
+            Beam width : <input style="width: 30px" type="text" id="beam_width" name="beam_width" value=0>
+            <br><br>
+    
+            Patience : <input style="width: 30px" type="text" id="patience" name="patience" value=0>
+            <br><br>
+        </div>
+
+        <div id="inference_options_greedy">
+
+            Temperature : <input style="width: 30px" type="text" id="temperature" name="temperature" value=0>
+            <br><br>
+    
+            Best of : <input style="width: 30px" type="text" id="best_of" name="best_of" value=0>
+            <br><br>
+
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+<!-- inserting these scripts at the end to be able to use all the elements in the DOM -->
+<script src="static/recorder.js"></script>
+<script src="static/app.js"></script>
+</body>
+</html>
