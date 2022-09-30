@@ -21,6 +21,27 @@ available options are:
 ## Option 2: run in Docker container
 First build the docker container with:
 
-Run the container together with a shell inside the container itself.
+```
+docker build . -t label/whisper-service-image 
+```
+
+Run the container together:
+
+```
+docker run -v /mount/whisper-service:/workspace --shm-size=512m --name whisper-service -p 4006:4006 --gpus all -dit label/whisper-service-image
+```
+and spawn a shell inside it:
+```
+sudo docker exec -it whisper-service /bin/bash
+```
 
 Follow steps in option 1 to run the app, skipping the installation of requirements.
+
+IMPORTANT: if you run in low level libraries incompatibilities you might wanna run:
+
+```
+pip install torch==1.10.0+cu111 torchvision==0.11.0+cu111 torchaudio==0.10.0+cu111 -f https://download.pytorch.org/wh
+l/torch_stable.html
+```
+
+This will download another torch version.
