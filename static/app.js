@@ -44,11 +44,19 @@ function showDecodingOptions(e){
         best_of.value=0 
         temperature.value=0  
     }
-    else{
+    else if ((method == 'sampling')){
         beam_search_div.style.display = "none"
         greedy_div.style.display = "block"
         patience.value=0
         beam_width.value=0 
+    }
+    else{
+        beam_search_div.style.display = "none"
+        greedy_div.style.display = "none"
+        patience.value=0
+        beam_width.value=0 
+        best_of.value=0 
+        temperature.value=0 
     }
 }
 

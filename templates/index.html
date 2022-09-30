@@ -152,6 +152,7 @@
         Decode method:
         <select id="decode_method_options">
             <option value="greedy" selected="selected"> greedy </option>
+            <option value="sampling"> sampling </option>
             <option value="beam search" > beam search </option>
         </select>
 
@@ -165,7 +166,7 @@
             <br><br>
         </div>
 
-        <div id="inference_options_greedy">
+        <div id="inference_options_greedy" style = "display:none">
 
             Temperature : <input style="width: 30px" type="text" id="temperature" name="temperature" value=0>
             <br><br>
