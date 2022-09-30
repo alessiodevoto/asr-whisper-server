@@ -73,7 +73,7 @@ def predict():
     beam_size = int(request.form.get('beam_width', default=0)) 
     temperature = float(request.form.get('temperature', default=0.0))
     patience = float(request.form.get('patience', default=0.0))
-    best_of = int(request.form.get('beam_width', default=0)) 
+    best_of = int(request.form.get('best_of', default=0)) 
     
     settings = {
         'language': language if language != 'DETECT' else None, # TODO check this
