@@ -44,7 +44,7 @@ def display_reference():
     return send_from_directory(directory=app.static_folder,
                                path='static/asr-it-postman-whisper.pdf',
                                mimetype='application/pdf')
-                               # TODO make whisper docs
+                               
 
 
 @app.route('/predict', methods=['POST'])
