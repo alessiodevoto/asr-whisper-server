@@ -1,8 +1,8 @@
 FROM pytorch/pytorch:1.10.0-cuda11.3-cudnn8-devel
 
 RUN apt-key del 7fa2af80 && \
-    apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/3bf863cc.pub \
-    apt-get update \
+    apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/3bf863cc.pub && \
+    apt-get update && \
     apt install -y bash \
     build-essential \
     libsndfile1-dev \
@@ -10,7 +10,8 @@ RUN apt-key del 7fa2af80 && \
     ffmpeg \
     sox \
     wget \
-    libsox-fmt-mp3
+    libsox-fmt-mp3 \
+    git
 
 RUN mkdir -p /workspace/
 WORKDIR /workspace/
