@@ -89,13 +89,21 @@ def predict():
     app.logger.info(f"Request settings: {settings}")
     app.logger.info(f"Request asked to use: {device}")
 
+    # Try and load model to device, managing CUDA exceptions.
     app.logger.info(f'Loading model to device: {device}')
     load_start = time.time()
     try:
         model = model.to(device)
     except Exception as e: # TODO improve this 
         app.logger.exception(e)
-        abort(500, description=f'{e}')
+        response['info'] = e
+        try:
+            app.logger.info('Failed to load to cuda, attempting CPU.')
+            model = model.to('cpu')
+        except Exception as e:
+            app.logger.exception(e)
+            abort(500, description=f'{e}')
+
     
     load_end = time.time()
     loading_time = load_end - load_start
