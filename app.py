@@ -94,15 +94,9 @@ def predict():
     load_start = time.time()
     try:
         model = model.to(device)
-    except Exception as e: # TODO improve this 
+    except Exception as e: 
         app.logger.exception(e)
-        response['info'] = e
-        try:
-            app.logger.info('Failed to load to cuda, attempting CPU.')
-            model = model.to('cpu')
-        except Exception as e:
-            app.logger.exception(e)
-            abort(500, description=f'{e}')
+        abort(500, description=f'{e}')
 
     
     load_end = time.time()
