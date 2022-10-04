@@ -56,6 +56,7 @@ class TextNormalizer:
         return batch
 
 def load_audio(filestorage, sample_rate=16000):
+    torchaudio.set_audio_backend("sox_io")
     speech_array, original_sample_rate = torchaudio.load(filestorage)
     audio = resample(speech_array, original_sample_rate, sample_rate).squeeze()
     if audio.size()[0] == 2:

@@ -2,3 +2,4 @@ model/*
 logs/*
 __pycache__/*
 model/proc.pt
+__pycache__/utils.cpython-39.pyc
