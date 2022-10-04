@@ -109,7 +109,15 @@ def predict():
         # 1. Load audio. Use torch cause can't use whisper default for library incompatibility.
         audio_load_start = time.time()
         audio_filestorage = files['audio']
-        audio = load_audio(audio_filestorage)
+        try:
+            audio = load_audio(audio_filestorage)
+        except Exception as e:
+            app.logger.exception(e)
+            try:
+                audio = load_audio(audio_filestorage, format='mp3')
+            except Exception as e:
+                app.logger.exception(e)
+                abort(400, description='Uploaded audio file is corrupted or not currently supported.')
         audio = whisper.pad_or_trim(audio)
         audio_load_end = time.time()
         audio_load_time = audio_load_end - audio_load_start

@@ -55,9 +55,9 @@ class TextNormalizer:
         batch["sentence"] = self.normalize_text(batch["sentence"])
         return batch
 
-def load_audio(filestorage, sample_rate=16000):
+def load_audio(filestorage, format=None, sample_rate=16000):
     torchaudio.set_audio_backend("sox_io")
-    speech_array, original_sample_rate = torchaudio.load(filestorage)
+    speech_array, original_sample_rate = torchaudio.load(filestorage, format=format)
     audio = resample(speech_array, original_sample_rate, sample_rate).squeeze()
     if audio.size()[0] == 2:
         audio = torch.mean(audio, dim=0).unsqueeze(0)
