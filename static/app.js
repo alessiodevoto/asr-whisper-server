@@ -248,6 +248,7 @@ function processResponse(response) {
     if (response.status !== 200) {
         console.log('ERROR');
         error_message = document.createElement("div");
+        error_message.setAttribute("style", "margin-top:20%");
         error_message.className = "error_message";
         error_message.appendChild(document.createTextNode(json_response['error']));
         results_panel.appendChild(error_message);
