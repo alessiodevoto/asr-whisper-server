@@ -191,7 +191,7 @@ function createDownloadLink(blob) {
     link.innerHTML = "Save to disk";
 
     //add the filename to the li
-    li.appendChild(document.createTextNode(filename + ".wav"))
+    li.appendChild(document.createTextNode(filename))
 
 	//add the new audio element to li
 	li.appendChild(au_options)
