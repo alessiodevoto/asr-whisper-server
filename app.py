@@ -118,7 +118,7 @@ def predict():
             except Exception as e:
                 app.logger.exception(e)
                 abort(400, description='Uploaded audio file is corrupted or not currently supported.')
-        audio = whisper.pad_or_trim(audio)
+        #audio = whisper.pad_or_trim(audio)
         audio_load_end = time.time()
         audio_load_time = audio_load_end - audio_load_start
         app.logger.info(f'Audio loading took {audio_load_time:.2f} seconds.')
@@ -145,7 +145,7 @@ def predict():
         response['settings'] = settings
         
         # 2. Transcription.
-        response['results'] = transcript # TODO list of transcriptions
+        response['results'] = transcript 
         response['language'] = result['language']
         
         # 3. Processing times. 
