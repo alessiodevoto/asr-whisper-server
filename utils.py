@@ -44,8 +44,8 @@ class TextNormalizer:
     def normalize_text(self, sentence):
         # Remove unwanted characters and normalize chars one by one
         # print(self.chars_to_remove_regex)
-        allowed_sentence = re.sub(self.apostrophe_regex, "'", sentence).lower()
-        allowed_sentence = re.sub(self.chars_to_remove_regex, '', allowed_sentence).lower()
+        allowed_sentence = re.sub(self.apostrophe_regex, "'", sentence)
+        allowed_sentence = re.sub(self.chars_to_remove_regex, '', allowed_sentence)
         new_sentence = ''
         for char in allowed_sentence:
             new_sentence += self.normalize_char(char)
