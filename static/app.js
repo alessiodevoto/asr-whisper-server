@@ -170,7 +170,7 @@ function createDownloadLink(blob) {
     var au_options = document.createElement('div');
     var au = document.createElement('audio');
     var li = document.createElement('li');
-    li.style.marginBottom = "3rem";
+    li.style.marginBottom = "5rem";
     var link = document.createElement('a');
 
 
